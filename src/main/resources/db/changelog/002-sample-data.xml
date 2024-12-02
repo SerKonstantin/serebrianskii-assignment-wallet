@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="3" author="konstantin">
+        <insert tableName="wallets">
+            <column name="id" value="123e4567-e89b-12d3-a456-426614174000" />
+            <column name="balance" value="1000.00" />
+            <column name="created_at" valueDate="2024-12-02T00:00:00" />
+        </insert>
+
+        <insert tableName="transactions">
+            <column name="id" value="123e4567-e89b-12d3-a456-426614174001" />
+            <column name="wallet_id" value="123e4567-e89b-12d3-a456-426614174000" />
+            <column name="operation_type" value="DEPOSIT" />
+            <column name="amount" value="1000.00" />
+            <column name="created_at" valueDate="2024-12-02T00:00:00" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
