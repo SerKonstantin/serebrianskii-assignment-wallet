@@ -1,6 +1,7 @@
 package org.assignment.wallet.service;
 
 import org.assignment.wallet.dto.WalletBalanceDTO;
+import org.assignment.wallet.exception.ResourceNotFoundException;
 import org.assignment.wallet.mapper.WalletMapper;
 import org.assignment.wallet.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class WalletService {
     @Transactional(readOnly = true)
     public WalletBalanceDTO getWalletBalance(UUID walletId) {
         var wallet = walletRepository.findById(walletId)
-                .orElseThrow(() -> new RuntimeException("Wallet with id " + walletId + " not found")); // TODO: change to custom
+                .orElseThrow(() -> new ResourceNotFoundException("Wallet with id " + walletId + " not found"));
         return walletMapper.map(wallet);
     }
 }

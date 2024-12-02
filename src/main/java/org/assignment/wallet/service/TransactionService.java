@@ -1,12 +1,12 @@
 package org.assignment.wallet.service;
 
 import org.assignment.wallet.dto.TransactionRequestDTO;
+import org.assignment.wallet.exception.InvalidRequestArgumentException;
 import org.assignment.wallet.mapper.TransactionMapper;
 import org.assignment.wallet.repository.TransactionRepository;
 import org.assignment.wallet.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.assignment.wallet.model.OperationType;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -26,7 +26,7 @@ public class TransactionService {
     public void processTransaction(TransactionRequestDTO request) {
         var walletId = request.getWalletId();
         var wallet = walletRepository.findByIdForUpdate(walletId)
-                .orElseThrow(() -> new RuntimeException("Wallet with id " + walletId + " not found")); // TODO: change to custom
+                .orElseThrow(() -> new InvalidRequestArgumentException("Wallet with id " + walletId + " not found"));
 
         var newBalance = calculateBalance(wallet.getBalance(), request);
         wallet.setBalance(newBalance);
@@ -45,11 +45,11 @@ public class TransactionService {
                 return currentBalance.add(amount);
             case WITHDRAW:
                 if (currentBalance.compareTo(amount) < 0) {
-                    throw new RuntimeException("Недостаточно средств."); // TODO: change to custom
+                    throw new InvalidRequestArgumentException("Недостаточно средств.");
                 }
                 return currentBalance.subtract(amount);
             default:
-                throw new RuntimeException("Сервер не смог распознать тип операции: " + request.getOperationType()); // TODO: change to custom
+                throw new InvalidRequestArgumentException("Сервер не смог распознать тип операции: " + request.getOperationType());
         }
     }
 }
