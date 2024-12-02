@@ -6,5 +6,6 @@
 
     <include file="001-initial-schema.xml" relativeToChangelogFile="true"/>
     <include file="002-sample-data.xml" relativeToChangelogFile="true"/>
+    <include file="003-rely-on-spring-for-timestamp-generation.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
