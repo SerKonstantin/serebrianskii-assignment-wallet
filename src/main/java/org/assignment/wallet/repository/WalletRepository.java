@@ -13,7 +13,7 @@ import java.util.UUID;
 @Repository
 public interface WalletRepository extends JpaRepository<Wallet, UUID> {
 
-    @Query("SELECT w FROM Wallet w WHERE w.id = :walletId FOR UPDATE")
+    @Query(value = "SELECT * FROM wallets WHERE id = :walletId FOR UPDATE", nativeQuery = true)
     Optional<Wallet> findByIdForUpdate(@Param("walletId") UUID walletId);
 
 }

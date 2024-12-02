@@ -49,7 +49,9 @@ public class TransactionService {
                 }
                 return currentBalance.subtract(amount);
             default:
-                throw new InvalidRequestArgumentException("Сервер не смог распознать тип операции: " + request.getOperationType());
+                throw new InvalidRequestArgumentException(
+                        "Сервер не смог распознать тип операции: " + request.getOperationType()
+                );
         }
     }
 }
