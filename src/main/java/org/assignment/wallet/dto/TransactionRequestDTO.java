@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.assignment.wallet.validation.dto.ValidOperationType;
+import org.assignment.wallet.model.OperationType;
 import org.assignment.wallet.validation.dto.ValidScale;
 
 import java.math.BigDecimal;
@@ -21,8 +21,8 @@ public class TransactionRequestDTO {
     @NotNull(message = "Не предоставлен ID кошелька")
     private UUID walletId;
 
-    @ValidOperationType
-    private String operationType;
+    @NotNull
+    private OperationType operationType;
 
     @NotNull(message = "Не предоставлена сумма")
     @DecimalMin(value = "0", inclusive = false, message = "Сумма должна быть больше 0")
