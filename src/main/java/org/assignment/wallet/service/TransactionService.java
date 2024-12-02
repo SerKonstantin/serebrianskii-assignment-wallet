@@ -6,11 +6,13 @@ import org.assignment.wallet.mapper.TransactionMapper;
 import org.assignment.wallet.repository.TransactionRepository;
 import org.assignment.wallet.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
+@Service
 public class TransactionService {
 
     @Autowired
