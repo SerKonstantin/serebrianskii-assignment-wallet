@@ -41,6 +41,7 @@ dependencies {
 	implementation("org.mapstruct:mapstruct:1.6.3")
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 	testImplementation("com.h2database:h2")
+	implementation("org.springframework.boot:spring-boot-starter-amqp")
 
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("io.micrometer:micrometer-registry-prometheus")
