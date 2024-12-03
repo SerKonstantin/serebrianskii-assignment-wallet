@@ -26,6 +26,6 @@ public class TransactionRequestDTO {
 
     @NotNull(message = "Не предоставлена сумма")
     @DecimalMin(value = "0", inclusive = false, message = "Сумма должна быть больше 0")
-    @ValidScale(maxScale = 2, message = "Сумма не должна содержать более 2 знаков после запятой")
+    @ValidScale(maxScale = 2, message = "Сумма должна содержать точно 2 знака после запятой")
     private BigDecimal amount;
 }
