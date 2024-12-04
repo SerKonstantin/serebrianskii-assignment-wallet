@@ -10,11 +10,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    // TODO: fetch from properties
     @Bean
     public ConnectionFactory connectionFactory() {
-        var connectionFactory = new CachingConnectionFactory("localhost");
-        connectionFactory.setPort(5672);
+        var connectionFactory = new CachingConnectionFactory(System.getenv().getOrDefault(
+                "SPRING_RABBITMQ_HOST",
+                "localhost"
+            ));
+        connectionFactory.setPort(Integer.parseInt(System.getenv().getOrDefault("SPRING_RABBITMQ_PORT", "5672")));
+
+        // Log the connection details
+        System.out.println("Connecting to RabbitMQ at "
+            + System.getenv().getOrDefault("SPRING_RABBITMQ_HOST", "localhost")
+            + System.getenv().getOrDefault("SPRING_RABBITMQ_PORT", "5672"));
+
         return connectionFactory;
     }
 

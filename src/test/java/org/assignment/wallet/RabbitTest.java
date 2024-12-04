@@ -35,7 +35,7 @@ public class RabbitTest {
 
     @Test
     public void testRabbitMqSendAndReceive() throws Exception {
-        TransactionRequestDTO request = new TransactionRequestDTO();
+        var request = new TransactionRequestDTO();
         request.setWalletId(UUID.randomUUID());
         request.setOperationType(OperationType.WITHDRAW);
         request.setAmount(new BigDecimal("100.00"));

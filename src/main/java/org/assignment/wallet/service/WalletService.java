@@ -5,6 +5,7 @@ import org.assignment.wallet.exception.ResourceNotFoundException;
 import org.assignment.wallet.mapper.WalletMapper;
 import org.assignment.wallet.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,11 @@ public class WalletService {
 
     @Autowired
     private WalletMapper walletMapper;
+
+    @Cacheable("wallets")
+    public boolean walletExists(UUID walletId) {
+        return walletRepository.existsById(walletId);
+    }
 
     @Transactional(readOnly = true)
     public WalletBalanceDTO getWalletBalance(UUID walletId) {

@@ -35,6 +35,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
+    hostname: rabbitmq
     ports:
       - "5673:5672"  # RabbitMQ default port
       - "15673:15672" # RabbitMQ management UI
