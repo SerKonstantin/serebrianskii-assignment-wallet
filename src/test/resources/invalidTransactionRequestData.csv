@@ -1,0 +1,9 @@
+Test data for invalid transactions in format:		requestJson|expectedStatusCode
+
+{"operationType":"DEPOSIT", "amount":100.00}|400
+{"walletId":"%s", "amount":100.00}|400
+{"walletId":"%s", "operationType":"DEPOSIT"}|400
+{"walletId":"123e4567-e89b-12d3-a456-426614174099", "operationType":"DEPOSIT", "amount":100.00}|400
+{"walletId":"%s", "operationType":"INVALID", "amount":100.00}|400
+{"walletId":"%s", "operationType":"DEPOSIT", "amount":"-100.00"}|400
+{"walletId":"%s", "operationType":"DEPOSIT", "amount":"100.0"}|400

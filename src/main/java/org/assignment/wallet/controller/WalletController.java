@@ -1,12 +1,12 @@
 package org.assignment.wallet.controller;
 
+import jakarta.validation.Valid;
 import org.assignment.wallet.dto.TransactionRequestDTO;
 import org.assignment.wallet.dto.WalletBalanceDTO;
 import org.assignment.wallet.service.TransactionService;
 import org.assignment.wallet.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +33,7 @@ public class WalletController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> processTransaction(@Validated @RequestBody TransactionRequestDTO request) {
+    public ResponseEntity<Void> processTransaction(@Valid @RequestBody TransactionRequestDTO request) {
         transactionService.processTransaction(request);
         return ResponseEntity.ok().build();
     }

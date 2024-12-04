@@ -21,11 +21,11 @@ public class TransactionRequestDTO {
     @NotNull(message = "Не предоставлен ID кошелька")
     private UUID walletId;
 
-    @NotNull
+    @NotNull(message = "Не предоставлен тип операции")
     private OperationType operationType;
 
     @NotNull(message = "Не предоставлена сумма")
-    @DecimalMin(value = "0", inclusive = false, message = "Сумма должна быть больше 0")
+    @DecimalMin(value = "0.01", inclusive = true, message = "Сумма должна быть больше 0")
     @ValidScale(maxScale = 2, message = "Сумма должна содержать точно 2 знака после запятой")
     private BigDecimal amount;
 }

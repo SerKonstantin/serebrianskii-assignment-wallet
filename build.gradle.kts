@@ -38,6 +38,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation("jakarta.validation:jakarta.validation-api")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.mapstruct:mapstruct:1.6.3")
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 	testImplementation("com.h2database:h2")
